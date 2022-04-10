@@ -66,3 +66,33 @@ if 1st thread is fs and request something from Hird drive it is a big pause wher
 and fs go to wating queue and execute higer piroty 1st.
 
 
+------------------2nd Section (Enhancing Performance)-----------------
+
+***improving node Performance*****
+1. Recommmended (Use Node in 'Cluster' Mode)
+2. Use worker Threads (Experimental)
+
+*** Cluster Theory****
+
+                       |-------> single thread (Node server)
+                       |
+Cluster Manager -------|------> single thread (Node server)
+                       |
+                       |
+                       |------> single thread (Node server)
+
+
+                Run node index.js
+                        |
+                        |      ------------>worker instance
+                    index.js   <-----------
+                        |                 |
+                        |                 |
+                    Cluster Manager       |
+                        |                 |
+                        |                 |
+                        Cluster.fork()----
+
+
+The very first time it's going to produce our Cluster Manager and then every
+time after that it's going to worker instance.
