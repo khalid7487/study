@@ -1,0 +1,68 @@
+***Node js working flow:
+1. Javascript code we write
+2. Node Javascript side (lib folder in Node repo)
+3. process.binding() (connects js and c++ functions)
+4.  Node's C++  side (50 % c++)
+5. v8 engine (converts values between js and C++ world)(70% c++)
+6. libUV(100% C++)
+
+*** pbkdf2 Function*****
+(password, salt , other options)----------> Pbkdf2 function -------> hash
+
+Note: pbkdf2 is a c++ library which is used in cripto library.
+
+**** Node program Run *****
+Node program usually run into one thread in Event Loop .
+
+*****Event Loop****
+
+
+const pendingTimers = [];
+const pendingOSTasks = [];
+const pendingOperations = [];
+
+    // Check one: Any pending setTimeout, setInterval, setImmediate?
+   // Check two: Any pending OS tasks? (Like server listening to port)
+   // Check three: Any pending long running operations?(Like fs module)
+
+
+function shouldContinue(){
+    // 1) Node look at pendingTimers and sees if any functions
+    // are ready to be called . setTimeout, setInterval
+
+    // 2) Node looks at pendingOSTasks and pendingOperations and 
+    // calls relevant callbacks
+
+    // 3) pause execution. continue when...
+    //  - a new pendingOSTasks is done 
+    //  - a new pendingOperations is done
+    //  - a timer is about to complete
+
+    // 4) look at pendingTimers. call any setImmediate.
+
+
+    return pendingTimers.length || pendingOSTasks.length || pendingOperations.length 
+}
+
+while(shouldContinue()){
+    return pendingTimers.length || pendingOSTasks.length || pendingOperations.length
+}
+
+***Is Node single Thread? ***********
+node js is not really single thread because it run into libuv which is C++ library
+and C++ run 4 thread .so node js is 4 thread. so node js have 4 thread.
+
+*** how to increase threadpool size******
+
+process.env.UV_THREADPOOL_SIZE = 5
+
+**important note ****
+https request direct handle operating system that's there in no blocking of our Javascript code inside.
+https use underline operating system
+
+-----------
+fs module read data from HDD for example: 
+if 1st thread is fs and request something from Hird drive it is a big pause where higer piroty comes to play 
+and fs go to wating queue and execute higer piroty 1st.
+
+
