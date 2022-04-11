@@ -97,4 +97,4 @@ Cluster Manager -------|------> single thread (Node server)
 The very first time it's going to produce our Cluster Manager and then every
 time after that it's going to worker instance.
 
-*Question:- 
+*Question:- 1 -> Clear the concept with krishan udaharon about queque
