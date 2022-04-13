@@ -1,0 +1,72 @@
+1. First, specify the index name after the CREATE INDEX clause. The index name should be meaningful and easy to remember.
+2. Second, specify the name of the table to which the index belongs.
+3. Third, specify the index method such as btree, hash, gist, spgist, gin, and brin. PostgreSQL uses btree by default.
+4. Fourth, list one or more columns that to be stored in the index. The ASC and DESC specify the sort order.
+   ASC is the default. NULLS FIRST or NULLS LAST specifies nulls sort before or after non-nulls. The NULLS FIRST 
+   is the default when DESC is specified and NULLS LAST is the default when DESC is not specified.
+
+***PostgreSQL time analyze query****
+(11 milion rows in table)
+
+---with indexing---
+explain analyze select id from employees(table name) where id = 200;
+
+important Note Here:
+-------here fecthing with id Execution time only : 0.141ms ,
+if we want to fecthing name insted of id it will take Execution time: 2.520ms 
+
+------without indexing ---
+explain analyze select id from employees(table name) where name = "khalid";
+
+important Note Here:
+---------here fecthing with name Execution time  : 3199.724ms  which is lot slower,
+although PostgreSQL used by default multiple worker thread (two worker)
+
+after indexing name column then it the execution time will be 47.089ms.
+and this time Bitmap index scan is used.
+
+----after like ---
+explain analyze select id from employees(table name) where name like "%khalid%";
+
+it will take so much time(1318.602ms) beause there is no index that satisfies the expretions.
+
+
+------------------------------------------------without expretions indexing-------------
+$> CREATE INDEX idx_users_username ON users (username);
+Time: 15987.751 ms
+$> EXPLAIN ANALYSE SELECT COUNT(*) FROM users WHERE username ILIKE '%foo%';
+
+                                                  QUERY PLAN
+--------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=21927.24..21927.25 rows=1 width=0) (actual time=752.271..752.271 rows=1 loops=1)
+   ->  Seq Scan on users  (cost=0.00..21927.00 rows=96 width=0) (actual time=752.268..752.268 rows=0 loops=1)
+         Filter: ((username)::text ~~* '%foo%'::text)
+         Rows Removed by Filter: 1000000
+ Planning time: 0.599 ms
+ Execution time: 752.318 ms
+(6 rows)
+
+Time: 753.251 ms
+
+-----------------------------------------with expretions indexing---------------
+$> CREATE EXTENSION pg_trgm;
+
+
+$> CREATE INDEX trgm_idx_users_username ON users USING gin (username gin_trgm_ops);
+
+
+
+$> EXPLAIN ANALYSE SELECT COUNT(*) FROM users WHERE username ILIKE '%foo%';
+
+                                                               QUERY PLAN
+----------------------------------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=369.12..369.13 rows=1 width=0) (actual time=0.030..0.030 rows=1 loops=1)
+   ->  Bitmap Heap Scan on users  (cost=12.75..368.88 rows=96 width=0) (actual time=0.026..0.026 rows=0 loops=1)
+         Recheck Cond: ((username)::text ~~* '%foo%'::text)
+         ->  Bitmap Index Scan on trgm_idx_users_username  (cost=0.00..12.72 rows=96 width=0) (actual time=0.024..0.024 rows=0 loops=1)
+               Index Cond: ((username)::text ~~* '%foo%'::text)
+ Planning time: 0.636 ms
+ Execution time: 0.095 ms
+(7 rows)
+
+Time: 2.333 ms
