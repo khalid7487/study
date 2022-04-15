@@ -56,6 +56,8 @@ $> CREATE INDEX trgm_idx_users_username ON users USING gin (username gin_trgm_op
 
 
 
+
+
 $> EXPLAIN ANALYSE SELECT COUNT(*) FROM users WHERE username ILIKE '%foo%';
 
                                                                QUERY PLAN
