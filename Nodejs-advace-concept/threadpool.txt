@@ -98,3 +98,8 @@ The very first time it's going to produce our Cluster Manager and then every
 time after that it's going to worker instance.
 
 *Question:- 1 -> Clear the concept with krishan udaharon about queque
+
+***************Benchmarking server Performance**************
+command: ab -c 50 -n 500 localhost:3000/fast
+
+here: -n 500( total 500 request)  and -c 50 (total concurrency) that's mean 50 request at same time

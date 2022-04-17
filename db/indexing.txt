@@ -72,3 +72,5 @@ $> EXPLAIN ANALYSE SELECT COUNT(*) FROM users WHERE username ILIKE '%foo%';
 (7 rows)
 
 Time: 2.333 ms
+
+
