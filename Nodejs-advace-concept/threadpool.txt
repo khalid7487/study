@@ -103,3 +103,10 @@ time after that it's going to worker instance.
 command: ab -c 50 -n 500 localhost:3000/fast
 
 here: -n 500( total 500 request)  and -c 50 (total concurrency) that's mean 50 request at same time
+
+------------------------------example: index.js-------
+(with 2 Cluster we got better Performance then 6 Cluster where our cores is 4)
+
+Important Note: By increasing the number of children that you have inside your application dramatically beyond the number of actual
+logical cores that you have are physical CPU cores that you have in your computer you're going to have a negative effect on the Performance of your system.
+so we can say clustring is great but you have to used it in good way.
