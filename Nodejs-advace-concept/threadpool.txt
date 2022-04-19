@@ -110,3 +110,24 @@ here: -n 500( total 500 request)  and -c 50 (total concurrency) that's mean 50 r
 Important Note: By increasing the number of children that you have inside your application dramatically beyond the number of actual
 logical cores that you have are physical CPU cores that you have in your computer you're going to have a negative effect on the Performance of your system.
 so we can say clustring is great but you have to used it in good way.
+
+******************************PM2************
+
+pm2 is package wich is create cluster by default
+
+---------command
+1.start cmd:-
+pm2 start index.js -i 0 (here , 0 means i don't 
+what is my cores just figure out what to do for me in
+that case and pm2 automaticall dected thread of my computer and create same ammount of thread)
+
+2.kill cmd:-
+pm2 delete index
+
+3. pm2 list (that's show our cluster)
+4. pm2 show (that's show our instance)
+
+
+
+
+ 
