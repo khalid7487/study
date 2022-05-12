@@ -20,6 +20,35 @@ end cmd ----
 sudo service redis-server stop
 
 
+******************************what is redis server **********************************
+
+Redis, which stands for Remote Dictionary Server, is a fast, open source, in-memory, key-value data store.
+it is mainly used mainly used for nosql database caching . this database make your request super fast for 
+
+Example::
+
+suppose you need to fetch an api 400ms everytime . if you used redis server as cheching it will take only 30ms only
+
+
+Redis working flow with mongoDB--
+
+
+localhost:3000 <----- (express App with mongoDB )<-------->  Redis  <-------------> mongoDB
+
+Explanation:
+
+1st localhost want to get fetch data form backend then backend 1st qurey in 
+caching server(redis) if data exists in caching server then it does not query 
+mongoDB and durign that time data is super quick. but now you may think what 
+happen if caching server does not have data during that time express app direct 
+query mongoDB 1st then give data to font end then store it in caching server. =D
+
+
+
+
+
+
+
 ------------------------------Redis CLI----------------------------------------------
 
 readis works with key value pair. and eveything in redis by default stirng 
@@ -54,6 +83,15 @@ true
 true
 > null rot
 
+***** add at a time ******
+> client.set('color', JSON.stringify( {root: 'red'} )
+... )
+true
+> client.set('color', JSON.stringify( {root: 'red'} ))
+true
+> client.get('color', console.log)
+true
+> null {"root":"red"}
 
 
 
