@@ -83,15 +83,12 @@ true
 true
 > null rot
 
-***** add at a time ******
-> client.set('color', JSON.stringify( {root: 'red'} )
-... )
-true
+***** add object at a time ******
 > client.set('color', JSON.stringify( {root: 'red'} ))
 true
-> client.get('color', console.log)
+> client.get('color',  (err, val) => console.log(JSON.parse(val)))    
 true
-> null {"root":"red"}
+> { root: 'red' }
 
 
 
