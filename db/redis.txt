@@ -22,6 +22,39 @@ sudo service redis-server stop
 
 ------------------------------Redis CLI----------------------------------------------
 
-readis works with key value pair.
+readis works with key value pair. and eveything in redis by default stirng 
+
+go terminal :- 
+
+node
+Welcome to Node.js v14.17.6.
+Type ".help" for more information.
+> const redis = require('redis');
+undefined
+> const redisUrl = 'redis://127.0.0.1:6379'
+undefined
+> const client = redis.createClient(redisUrl)
+undefined
+> client
+
+----------------------------set string data --
+> client.set('hi', 'there')
+true
+> client.get('hi',console.log )
+true
+> null there
+----------------------nested object data-----------
+
+> client.hset('german', 'red', 'rot')
+true
+> client.hget('german', 'red', console.log())
+
+true
+> client.hget('german', 'red', console.log)
+true
+> null rot
+
+
+
 
 
