@@ -90,6 +90,10 @@ true
 true
 > { root: 'red' }
 
-
-
+**********************add set link list *******
+> client.lpush('queue', 'abb', 'aff', 'dd3')
+true
+> client.lrange('queue', 0, -1, (err, items) => {console.log(items)});
+true
+> [ 'dd3', 'aff', 'abb', '3', '2', '1' ]
 
