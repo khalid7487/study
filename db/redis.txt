@@ -97,3 +97,5 @@ true
 true
 > [ 'dd3', 'aff', 'abb', '3', '2', '1' ]
 
+*******************************Remove previous all data *******************
+client.flushall()
