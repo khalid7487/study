@@ -1,0 +1,52 @@
+What is redux ?
+Answers: Redux is an open-source JavaScript library for managing and centralizing application state.
+ It is most commonly used with libraries such as React or Angular for building user interfaces. 
+ Similar to Facebook's Flux architecture.
+
+why redux ?
+Answers: Redux itself is a standalone library that can be used with any UI layer or framework, 
+including React, Angular, Vue, Ember, and vanilla JS. 
+Although Redux and React are commonly used together, they are independent of each other.
+
+Redux Steps:
+1. Design the store.
+2. Define the actions.
+3. Create a reducer.
+4. Set up the store.
+
+Redux Fllow diagram:-
+        
+        (dispatch)
+Actions --------> stoe ----------------------------> Reducer
+                       <--------------------------
+
+Here action is the entrance of store.
+
+For immutable Redux store you need to either used spread operator or immer as a library.
+
+
+Important note:
+
+when you subscribed a store you need to unsubscribed it also
+
+const unsubscribed = sotre.subscribed(() => {
+    console.log("store changed!", store.getState());
+});
+
+store.dispatch({
+    type: "bugAdded",
+    payload:{
+        description: "Bug1"
+    }
+});
+
+unsubscribed();
+
+store.dispatch({
+    type: "bugRemoved",
+    payload:{
+        description: "Bug1"
+    }
+});
+
+
