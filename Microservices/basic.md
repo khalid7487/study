@@ -11,6 +11,10 @@ Datamanagement is most hard job in microservices. There are two type of things f
 
 Note: This is not similer with javascript sync and async it is totally different.
 
+Sync ----> Services communicate with each other using direct request.
+
+Async ----> Services communicate with each other using events.
+
 Note on Sync Communication:
 
 Pros:

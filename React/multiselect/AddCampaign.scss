@@ -1,0 +1,379 @@
+$primary-color: #3f51b5;
+$border-color: 1px solid #bebebe;
+
+@mixin textfield {
+    label {
+        width: 120px;
+    }
+    input {
+        width: 300px;
+        padding: 3px;
+        border: $border-color;
+    }
+}
+
+@mixin selectSection {
+    label {
+        width: 120px;
+    }
+    select {
+        width: 300px;
+        padding: 3px;
+        border: $border-color;
+
+        option {
+            &:first-child {
+                display: none;
+            }
+        }
+    }
+}
+
+@mixin url-section {
+    display: flex;
+    align-items: center;
+
+    label {
+        width: 120px;
+    }
+    textarea {
+        width: 300px;
+        border: $border-color;
+    }
+}
+
+@mixin supported {
+    label {
+        cursor: pointer;
+        margin-left: 5px;
+    }
+    input {
+        cursor: pointer;
+    }
+}
+
+@mixin up-down-arrow {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+}
+
+.campaign-modal-sections {
+    .header-title {
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    .campaign-modal-body {
+        .campaign-modal-section {
+            .campaigns-id {
+                margin: 10px 0;
+                @include textfield;
+
+                @include up-down-arrow;
+            }
+
+            .campaigns-name {
+                @include textfield;
+            }
+
+            .description {
+                margin-top: 10px;
+                @include url-section;
+            }
+
+            .geography {
+                margin: 10px 0;
+                position: relative;
+                display: flex;
+
+                label {
+                    width: 120px;
+                }
+                .multi-select-sections {
+                    border: $border-color;
+                    width: 300px;
+                    min-height: 40px;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    padding: 5px;
+                    .single-item {
+                        display: flex;
+                        background: #e6e6e6;
+                        overflow: hidden;
+                        align-items: center;
+                        border-radius: 6px;
+
+                        .country-name {
+                            font-size: 14px;
+                            padding: 0px 5px;
+                        }
+
+                        .geography-cross {
+                            font-size: 18px;
+                            padding: 2px 5px;
+                            cursor: pointer;
+                            &:hover {
+                                background-color: #ffbdad;
+                                color: #de350b;
+                            }
+                        }
+                    }
+                    input {
+                        padding: 3px;
+                        width: 100vw;
+                        height: 28px;
+                        border: none;
+                        &:focus {
+                            border: 1px solid #0048ba;
+                        }
+                        &:hover {
+                            border: 1px solid #0048ba;
+                        }
+                    }
+                    .suggest-box {
+                        position: absolute;
+                        width: 65%;
+                        left: 118px;
+                        top: 26px;
+                        z-index: 9999999;
+                        background-color: #fff;
+                        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 21%);
+                        margin-top: 5px;
+                        border-radius: 3px;
+                        padding: 15px 20px;
+                        max-height: 300px;
+                        overflow-y: auto;
+                        flex-direction: column;
+
+                        .suggest-box-search-btn {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            height: 40px;
+                            outline: none;
+                            background: transparent;
+                            text-align: left;
+                            font-size: 14px;
+                            font-family: "Open Sans", sans-serif;
+                            border: none;
+                            border-bottom: 1px solid #eaeaea;
+
+                            &:hover {
+                                color: $primary-color;
+                                transition: 0.5s;
+                            }
+                            .suggest-box-line-climb {
+                                display: -webkit-box;
+                                -webkit-line-clamp: 1;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .traffic-type {
+                @include selectSection;
+            }
+
+            .rev-type {
+                margin: 10px 0;
+                @include selectSection;
+            }
+
+            .device-type {
+                @include textfield;
+            }
+
+            .task-type {
+                margin: 10px 0;
+                @include selectSection;
+            }
+
+            .daily-cap {
+                @include textfield;
+                @include up-down-arrow;
+            }
+
+            .rate {
+                margin: 10px 0;
+                position: relative;
+                @include textfield;
+                input {
+                    padding-left: 15px;
+                }
+                @include up-down-arrow;
+
+                .usd-symbol {
+                    position: absolute;
+                    top: 0;
+                    right: 50px;
+                    border-left: 1px solid gray;
+                    background-color: gray;
+                    padding: 5px 10px;
+                    height: 30px;
+                    color: white;
+                }
+
+                .dollar-symbol {
+                    position: absolute;
+                    top: 1.5px;
+                    left: 125px;
+                    padding: 3px 0px;
+                    font-weight: 700;
+                }
+            }
+
+            .expire-date {
+                @include textfield;
+                input {
+                    height: 35px;
+                }
+            }
+
+            .tracking-date {
+                margin-top: 10px;
+                @include selectSection;
+            }
+
+            .keyword-restrictions {
+                margin-top: 10px;
+                @include url-section;
+            }
+
+            .offer-enables {
+                margin: 10px 0;
+
+                label {
+                    width: 120px;
+                }
+                select {
+                    border: $border-color;
+                    width: 300px;
+                    height: 35px;
+                }
+            }
+
+            .contextual {
+                margin: 10px 0;
+                @include url-section;
+            }
+            .display {
+                margin: 10px 0;
+                @include url-section;
+            }
+            .search-url {
+                margin: 10px 0;
+                @include url-section;
+            }
+            .social {
+                margin: 10px 0;
+                @include url-section;
+            }
+            .email {
+                margin: 10px 0;
+                @include url-section;
+            }
+            .mobile-ads {
+                margin: 10px 0;
+                @include url-section;
+            }
+
+            .display-supported-sections {
+                margin-top: 10px;
+                h6 {
+                    text-align: center;
+                }
+                .display-supported {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    .android {
+                        @include supported;
+                    }
+
+                    .ios {
+                        @include supported;
+                    }
+                    .windows {
+                        @include supported;
+                    }
+                    .all {
+                        @include supported;
+                    }
+                }
+            }
+
+            .campaign-img-sections {
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                h6 {
+                    width: 120px;
+                }
+
+                .campaign-img-section {
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 64%;
+
+                    .single-image {
+                        width: 100px;
+                        position: relative;
+                        height: 60px;
+                        border: 1px solid #bebebe;
+                        background-color: #efefef;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+
+                        input {
+                            opacity: 0;
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 99;
+                            cursor: pointer;
+
+                            &::file-selector-button {
+                                cursor: pointer;
+                            }
+                        }
+                        p {
+                            display: flex;
+                            align-items: center;
+                            margin: 0;
+                            // justify-content: space-between;
+                            cursor: pointer;
+
+                            img {
+                                width: 15px;
+                            }
+                        }
+                        img {
+                            object-fit: contain;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
