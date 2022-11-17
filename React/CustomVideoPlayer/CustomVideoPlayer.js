@@ -14,6 +14,7 @@ import  locationIcon from "../../../../assets/watch/location.png";
 
 import './CustomVideoPlayer.scss';
 
+// video src will be video src , add src. title comes from json file, thumbnail , duration default zero   
 const VideoPlayer = ({videoSrc, addsSrc, title, duration, thumbnail}) => {
   
   const [paused, setPaused] = useState(true);
