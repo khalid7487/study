@@ -1,6 +1,6 @@
 ## Docker basic command cli
 
-**docker build -t khalid7487/posts**
+**docker build -t khalid7487/posts .**
 
 ``Build an image based on the dockerfile in the current directory. Tag it as 'khalid7487/posts' ``
 
