@@ -12,6 +12,10 @@
 
 ``create and start container but also override the default command ``
 
+**sudo docker run -p 8080:8080 [image id or image tag]**
+
+``this will expose port 8080 for docker``
+
 **docker ps**
 
 ``print out information about all of the running container``
