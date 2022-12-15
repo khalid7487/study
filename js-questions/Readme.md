@@ -36,4 +36,11 @@ Promises have three states:
 2. Fulfilled: This state indicates that the specified operation was completed.
 3. Rejected: This state indicates that operation did not complete. In this case an error value will be thrown.
 
+## Event loop:
+
+Javascript is a single thead language but it works like a multi thread for event loop cause js wont do heavy work
+with web API/ c++ Api after work is done it will go either callback queue and Micro task  queue (here we need to take note when we used promise during that time it will go into micro task queue) 
+
+Event loop give more priority to micro task  queue then callback queue.
+
 
