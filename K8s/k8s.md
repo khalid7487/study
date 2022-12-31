@@ -5,6 +5,13 @@ Install K8S Process:
   https://www.fosstechnix.com/how-to-install-minikube-on-ubuntu-20-04-lts/
 
 
+Running Procedure:  
+1. checking status of minikube:  minikube status
+2. Running cmd: minikube start --driver=none
+3. Checking running status: kubectl version
+
+
+
 Important Terminology:
 
 1. Kubernetes Cluster --> A collections of nodes + a master to manage them.
@@ -26,7 +33,6 @@ Important Terminology:
 3. Always store these files with our project source code - they are documentation!
 
 4. We can create objects without config files - do not do this config files provide a precise definition of what your cluster is running
-
 
 
 
