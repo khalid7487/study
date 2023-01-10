@@ -1,0 +1,13 @@
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+  margin: 0 auto;
+}
+input{
+  height: 35px;
+}
+.App{
+  margin-top: 50px;
+}
