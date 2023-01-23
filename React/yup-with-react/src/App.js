@@ -43,8 +43,6 @@ function App() {
         <input type="text" {...register('age')}  placeholder="Enter age" />
         {errors.age && <p>Age required.</p>}
 
-
-
         <input type="password" {...register('password')} />
 
         {errors.password && <p>Password at least 4 character to max 15 character.</p>}
