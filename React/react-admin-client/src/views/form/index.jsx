@@ -5,13 +5,14 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../component/Header";
 
 const Form = () => {
-  const isNonMobile = useMediaQuery("(min-width:600px");
+  const isNonMobile = useMediaQuery("(min-width:600px)");
+
   const handleFormSubmit = (values) => {
     console.log(values);
   };
   return (
     <Box m="20px">
-      <Header title="CREATE USER" subtitle="Create a new User Profile" />
+      <Header title="CREATE USER" subtitle="Create a New User Profile" />
 
       <Formik
         onSubmit={handleFormSubmit}
@@ -26,13 +27,13 @@ const Form = () => {
           handleChange,
           handleSubmit,
         }) => (
-          <form onSubmit={handleFormSubmit}>
+          <form onSubmit={handleSubmit}>
             <Box
               display="grid"
               gap="30px"
-              gridTemplateColumns="repeat(4,minmax(0, 1fr))"
+              gridTemplateColumns="repeat(4, minmax(0, 1fr))"
               sx={{
-                "& >div": { gridColumn: isNonMobile ? undefined : "span 4" },
+                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
               }}
             >
               <TextField
@@ -61,7 +62,6 @@ const Form = () => {
                 helperText={touched.lastName && errors.lastName}
                 sx={{ gridColumn: "span 2" }}
               />
-
               <TextField
                 fullWidth
                 variant="filled"
@@ -138,6 +138,8 @@ const checkoutSchema = yup.object().shape({
     .string()
     .matches(phoneRegExp, "Phone number is not valid")
     .required("required"),
+  address1: yup.string().required("required"),
+  address2: yup.string().required("required"),
 });
 const initialValues = {
   firstName: "",
