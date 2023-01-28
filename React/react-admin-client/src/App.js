@@ -13,6 +13,9 @@ import Dashboard from "./views/dashboard";
 // import FAQ from "./views/faq";
 // import Geography from "./views/geography";
 // import Calender from "./views/calender";
+
+
+
 import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 
