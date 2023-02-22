@@ -1,10 +1,14 @@
 import { Typography, Box, useTheme, Button } from "@mui/material";
 import { tokens } from "../theme";
 
+import Chip from '@mui/material/Chip';
+import Check from '@mui/icons-material/Check';
+
+
 const Header = ({ title, subtitle }) => {
-   const theme = useTheme();
-   const colors = tokens(theme.palette.mode)
-   return (
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
+  return (
     <Box mb="30px">
       <Typography
         variant="h2"
@@ -17,7 +21,18 @@ const Header = ({ title, subtitle }) => {
       <Typography variant="h5" color={colors.greenAccent[400]}>
         {subtitle}
       </Typography>
-      <Button color="secondary">Test</Button>
+      <Button color="secondary" variant="contained">
+        Test
+      </Button>
+      <Chip
+        color="success"
+        label={
+          <span>
+            <b>Status:</b> Completed
+          </span>
+        }
+        icon={<Check fontSize="small" />}
+      />
     </Box>
   );
 };

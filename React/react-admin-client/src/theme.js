@@ -210,7 +210,27 @@ export const themeSettings = (mode) => {
           root: {
             // Some CSS
             fontSize: "1rem",
+            color: "#bebebe",
+            // backgroundColor: "red"
           },
+        },
+      },
+      MuiChip: {
+        styleOverrides: {
+          root: ({ theme }) =>
+            theme.unstable_sx({
+              px: 1,
+              py: 0.25,
+              borderRadius: 1,
+            }),
+          label: {
+            padding: 'initial',
+          },
+          icon: ({ theme }) =>
+            theme.unstable_sx({
+              mr: 0.5,
+              ml: '-2px',
+            }),
         },
       },
     },
