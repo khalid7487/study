@@ -92,3 +92,19 @@ If you want to update your application  you need to docker build again :
 
 
 
+## Docker compose Command:
+   
+   **after making docker compose file run command will:**
+             `docker compose up -d ` 
+   **Note:** This command make your image as well as run your container but if you change something this will not help you to rebuild
+   **For rebuild Command**  `docker compose up -d --build`
+
+   **For docker compose down** `docker compose down -v ` 
+   **Note:** here v flag will remove associate volume of the container
+
+   **Run Different file in different mode(like develop and production) command** ``docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build``
+   **Note:** !important build flag only for production. here, f flag is mean file and one things important we need to keep our sequence right 
+
+   **Down command** ``docker compose -f docker-compose.yml -f docker-compose.dev.yml down -v``
+
+   **Move into bash file** ``docker exec -it <container id> sh``
