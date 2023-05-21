@@ -17,7 +17,7 @@ export function Profile() {
     })
   
 
-    console.log(balance, balanceError ,balanceLoading,  "chain information information's")
+    // console.log(balance, balanceError ,balanceLoading,  "chain information information's")
     if (isConnected) {
         return (
           <div>
